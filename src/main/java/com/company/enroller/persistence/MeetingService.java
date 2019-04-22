@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Component;
 
 import com.company.enroller.model.Meeting;
+import com.company.enroller.model.Participant;
 
 @Component("meetingService")
 public class MeetingService {
@@ -23,4 +24,34 @@ public class MeetingService {
 		return query.list();
 	}
 
+
+	
+	public Meeting findById(long id) {
+		return (Meeting)connector.getSession().get(Meeting.class, id);
+		
+	}
+
+	public void add(Meeting meeting) {
+		Transaction transaction = connector.getSession().beginTransaction();
+		connector.getSession().save(meeting);
+		transaction.commit();
+		
+	}
+
+	public void delete(Meeting meeting) {
+		Transaction transaction = connector.getSession().beginTransaction();
+		connector.getSession().delete(meeting);
+		transaction.commit();
+		
+	}
+
+
+	public void updateMeeting(Meeting meeting) {
+
+			Transaction transaction = connector.getSession().beginTransaction();
+			connector.getSession().save(meeting);
+			transaction.commit();
+		
+	}
+	
 }
