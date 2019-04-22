@@ -30,6 +30,7 @@ public class MeetingRestController {
 
 	
 	//LISTA SPOTKAN
+	//curl -H "Content-Type: application/json"  localhost:8080/meetings
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<?> getMeetings() {
 		Collection<Meeting> meetings = meetingService.getAll();
@@ -38,6 +39,7 @@ public class MeetingRestController {
 	
 	
 	// SPOTKANIE po id
+	//curl -H "Content-Type: application/json"  localhost:8080/meetings/3
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getMeeting(@PathVariable("id") long id) {
 	     Meeting meeting = meetingService.findById(id);
@@ -85,7 +87,7 @@ public class MeetingRestController {
 
     //DODANIE UCZESTNIKA DO SPOTKANIA
     // curl -H "Content-Type: application/json" -d '{"login":"user5", "password":"passsword"}' localhost:8080/meetings/3/
-    @RequestMapping(value = "/{id}/", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public ResponseEntity<?> addMeetingParticipant(@RequestBody Participant par, @PathVariable("id") long id){
     	Meeting meeting = meetingService.findById(id);
     	
