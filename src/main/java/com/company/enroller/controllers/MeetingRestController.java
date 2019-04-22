@@ -115,7 +115,7 @@ public class MeetingRestController {
     
     
     //MODYFIKACJA SPOTKANIA
-    //curl -X PUT -H "Content-Type: application/json" -d '{"title":"zmiana", "description": "desc", "date": "xxMonday"}' localhost:8080/meetings/9
+    //curl -X PUT -H "Content-Type: application/json" -d '{"title":"zmiana", "description": "desc", "date": "xxMonday"}' localhost:8080/meetings/9/
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> changeMeeting(@PathVariable("id") long id,
 			@RequestBody Meeting incomingMeeting){
